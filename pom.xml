@@ -18,7 +18,7 @@
   <!-- "SNAPSHOT" means this is a development version -->
 
   <!-- Packaging type: can be jar, war, ear, etc. -->
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <!-- Build properties -->
   <properties>
@@ -31,8 +31,8 @@
   <plugins>
     <plugin>
       <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-jar-plugin</artifactId>
-      <version>3.2.2</version>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>4.0.1</version>
       <configuration>
         <archive>
           <manifest>
