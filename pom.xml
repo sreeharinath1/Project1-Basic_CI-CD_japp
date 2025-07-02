@@ -1,0 +1,42 @@
+<!-- Root element of every Maven POM file -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <!-- POM model version (always 4.0.0 for Maven 2 and later) -->
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Group ID: typically your organization or domain in reverse -->
+  <groupId>com.example</groupId>
+
+  <!-- Artifact ID: the name of your project/module -->
+  <artifactId>project1</artifactId>
+
+  <!-- Version of your project -->
+  <version>1.0-SNAPSHOT</version>
+  <!-- "SNAPSHOT" means this is a development version -->
+
+  <!-- Packaging type: can be jar, war, ear, etc. -->
+  <packaging>jar</packaging>
+
+  <!-- Build properties -->
+  <properties>
+    <!-- Java version to compile the code with -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <!-- Project dependencies -->
+  <dependencies>
+    <!-- JUnit: used for writing and running unit tests -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+      <!-- Scope "test" means this dependency is only used during testing -->
+    </dependency>
+  </dependencies>
+
+</project>
