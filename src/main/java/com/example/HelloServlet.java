@@ -54,7 +54,7 @@ public class HelloServlet extends HttpServlet {
 
         out.println("<div class='about-me'>");
         out.println("<h1>‍About Me: Sreeharinath lover of nihi </h1>");
-	out.println("<h2><200d>Completed 3 years in TCS</h2>");
+	out.println("<h2>Completed 3 years in TCS</h2>");
         out.println("<p>DevOps Engineer | Bengaluru 🇮🇳</p>");
         out.println("<p>CI/CD • Kubernetes • Jenkins • Ansible • AWS • Tools</p>");
         out.println("<p>Email: <a href='mailto:sreeharinathp@gmail.com'>sreeharinathp@gmail.com</a></p>");
