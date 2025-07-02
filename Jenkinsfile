@@ -11,6 +11,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/sreeharinath1/Project1.git'
             }
         }
+        
+        stage('Pre-clean') {
+            steps {
+        	sh 'rm -rf target'
+    		}
+	}
 
         stage('Build WAR') {
             steps {
