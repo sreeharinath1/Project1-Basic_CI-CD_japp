@@ -18,58 +18,65 @@ public class HelloServlet extends HttpServlet {
         out.println("<html lang='en'>");
         out.println("<head>");
         out.println("<meta charset='UTF-8'>");
-        out.println("<title>Welcome to Project1</title>");
+        out.println("<title>Project1 - Sree CI/CD</title>");
         out.println("<style>");
-        out.println("body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #000; color: white; }");
+        out.println("body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background-color: #000; color: white; overflow-x: hidden; }");
         out.println("canvas { position: fixed; top: 0; left: 0; z-index: -1; }");
-        out.println("header { background-color: rgba(0,0,0,0.7); padding: 20px; text-align: center; }");
-        out.println("main { padding: 40px 20px; text-align: center; }");
-        out.println(".about-me { background-color: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; display: inline-block; margin-top: 40px; }");
-        out.println("button.like-btn { margin-top: 30px; padding: 15px 30px; font-size: 18px; border: none; border-radius: 8px; background-color: #ff4081; color: white; cursor: pointer; transition: 0.3s; }");
-        out.println("button.like-btn:hover { background-color: #e91e63; }");
-        out.println(".love-message { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);");
-        out.println("background-color: rgba(0, 0, 0, 0.7); padding: 40px; border-radius: 15px; color: #ff69b4; font-size: 30px; text-align: center; z-index: 1000; }");
+        out.println("header { background: rgba(0, 0, 0, 0.8); padding: 20px 0; text-align: center; font-size: 24px; }");
+        out.println("main { text-align: center; padding: 50px 20px; }");
+        out.println(".about-me { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; margin-top: 30px; display: inline-block; }");
+        out.println("a { color: #ffcc00; text-decoration: none; }");
+
+        // 💖 Like Button Style
+        out.println(".like-btn { margin-top: 40px; padding: 15px 40px; font-size: 18px; font-weight: bold;");
+        out.println("background: linear-gradient(145deg, #ff5f6d, #ffc371); color: white; border: none; border-radius: 30px;");
+        out.println("box-shadow: 0 10px 20px rgba(255, 99, 132, 0.5); transition: transform 0.2s ease; cursor: pointer; }");
+        out.println(".like-btn:hover { transform: scale(1.05); background: linear-gradient(145deg, #ff416c, #ff4b2b); }");
+
+        // 💬 Love Message Animation
+        out.println("#loveMsg { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);");
+        out.println("background: rgba(255, 255, 255, 0.1); padding: 40px 60px; border-radius: 20px;");
+        out.println("color: #ff69b4; font-size: 32px; font-weight: bold; text-align: center;");
+        out.println("box-shadow: 0 0 40px rgba(255, 105, 180, 0.6); animation: fadeIn 1s ease-out; z-index: 9999; }");
+
+        // 💥 Animation
+        out.println("@keyframes fadeIn { from {opacity: 0; transform: scale(0.8);} to {opacity: 1; transform: scale(1);} }");
+
         out.println("</style>");
         out.println("</head>");
         out.println("<body>");
         out.println("<canvas id='stars'></canvas>");
 
-        out.println("<header><h1>🚀 Project1 Java Web App</h1></header>");
+        out.println("<header>🚀 Jenkins + Tomcat Web App Deployed Successfully</header>");
         out.println("<main>");
-        out.println("<h1>Hello, Jenkins + Tomcat Deployment was Successful! 🎉</h1>");
-        out.println("<p>This servlet is deployed and running inside Tomcat on your CI/CD pipeline.</p>");
+        out.println("<h1>🎉 Welcome to Project1!</h1>");
+        out.println("<p>This servlet is running inside Tomcat with CI/CD from Jenkins.</p>");
+
         out.println("<div class='about-me'>");
         out.println("<h2>👨‍💻 About Me: Sreeharinath Peetla</h2>");
-        out.println("<p>DevOps & Automation Enthusiast from Bengaluru 🇮🇳</p>");
-        out.println("<p>3+ years in Production Support, CI/CD, Monitoring, Scripting</p>");
-        out.println("<p>Skilled in Jenkins, Ansible, AWS, Kubernetes, Git, and Shell/Python</p>");
+        out.println("<p>DevOps Engineer | Bengaluru 🇮🇳</p>");
+        out.println("<p>CI/CD • Kubernetes • Jenkins • Ansible • AWS</p>");
         out.println("<p>Email: <a href='mailto:sreeharinathp@gmail.com'>sreeharinathp@gmail.com</a></p>");
         out.println("</div>");
 
-        // Like button
-        out.println("<button class='like-btn' onclick='showLove()'>❤️ Like</button>");
-
-        // Love message overlay
-        out.println("<div class='love-message' id='loveMsg'>❤️ Love You from Sree 💖</div>");
-
+        out.println("<br><button class='like-btn' onclick='showLove()'>❤️ Like</button>");
+        out.println("<div id='loveMsg'>💖 Love You from Sree 💝</div>");
         out.println("</main>");
 
-        // Stars background
+        // 🌌 Stars Background
         out.println("<script>");
-        out.println("const canvas = document.getElementById('stars');");
-        out.println("const ctx = canvas.getContext('2d');");
-        out.println("let stars = [];");
+        out.println("const canvas = document.getElementById('stars'); const ctx = canvas.getContext('2d'); let stars = [];");
         out.println("function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }");
         out.println("window.addEventListener('resize', resize); resize();");
-        out.println("for (let i = 0; i < 150; i++) { stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5, d: Math.random() * 0.5 }); }");
-        out.println("function draw() { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = 'white'; ctx.beginPath(); for (let i = 0; i < stars.length; i++) { let s = stars[i]; ctx.moveTo(s.x, s.y); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); } ctx.fill(); update(); }");
-        out.println("function update() { for (let i = 0; i < stars.length; i++) { let s = stars[i]; s.y += s.d; if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; } } }");
+        out.println("for (let i = 0; i < 150; i++) { stars.push({ x: Math.random()*canvas.width, y: Math.random()*canvas.height, r: Math.random()*1.5, d: Math.random()*0.5 }); }");
+        out.println("function draw() { ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle='white'; ctx.beginPath(); stars.forEach(s => { ctx.moveTo(s.x, s.y); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); }); ctx.fill(); update(); }");
+        out.println("function update() { stars.forEach(s => { s.y += s.d; if (s.y > canvas.height) { s.y = 0; s.x = Math.random() * canvas.width; } }); }");
         out.println("function animate() { draw(); requestAnimationFrame(animate); } animate();");
         out.println("</script>");
 
-        // JS for Love Message
+        // ❤️ JS to Show Message
         out.println("<script>");
-        out.println("function showLove() { document.getElementById('loveMsg').style.display = 'block'; }");
+        out.println("function showLove() { const msg = document.getElementById('loveMsg'); msg.style.display = 'block'; msg.style.animation = 'fadeIn 0.8s ease'; }");
         out.println("</script>");
 
         out.println("</body>");
