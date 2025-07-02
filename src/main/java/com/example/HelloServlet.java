@@ -53,13 +53,14 @@ public class HelloServlet extends HttpServlet {
         out.println("<p>This servlet is running inside Tomcat with CI/CD from Jenkins.</p>");
 
         out.println("<div class='about-me'>");
-        out.println("<h2>‍About Me: Sreeharinath lover of nihi </h2>");
+        out.println("<h1>‍About Me: Sreeharinath lover of nihi </h1>");
+	out.println("<h2><200d>Completed 3 years in TCS</h2>");
         out.println("<p>DevOps Engineer | Bengaluru 🇮🇳</p>");
         out.println("<p>CI/CD • Kubernetes • Jenkins • Ansible • AWS • Tools</p>");
         out.println("<p>Email: <a href='mailto:sreeharinathp@gmail.com'>sreeharinathp@gmail.com</a></p>");
         out.println("</div>");
 
-        out.println("<br><button class='like-btn' onclick='showLove()'>❤️ Like</button>");
+        out.println("<br><button class='like-btn' onclick='showLove()'> Like</button>");
         out.println("<div id='loveMsg'>Love You from Sree...thanks for like </div>");
         out.println("</main>");
 
