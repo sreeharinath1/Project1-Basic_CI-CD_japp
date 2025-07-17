@@ -11,12 +11,12 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/sreeharinath1/Project1.git'
             }
         }
-        
+
         stage('Pre-clean') {
             steps {
-        	sh 'rm -rf target'
-    		}
-	}
+                sh 'rm -rf target'
+            }
+        }
 
         stage('Build WAR') {
             steps {
@@ -34,14 +34,12 @@ pipeline {
             steps {
                 deploy adapters: [
                     tomcat9(
-                        credentialsId: 'tomcat-creds',
-                        path: '',
+                        path: '/project1',
                         url: 'http://13.235.9.222:8080'
                     )
                 ],
-                contextPath: 'project1',
                 war: 'target/project1-1.0-SNAPSHOT.war'
             }
         }
     }
-}	
+}
