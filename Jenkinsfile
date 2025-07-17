@@ -30,15 +30,12 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
+        stage('Deploy WAR via curl') {
             steps {
-                deploy adapters: [
-                    tomcat9(
-                        path: '/project1',
-                        url: 'http://13.235.9.222:8080'
-                    )
-                ],
-                war: 'target/project1-1.0-SNAPSHOT.war'
+                sh '''
+                curl -X PUT "http://13.235.9.222:8080/manager/text/deploy?path=/project1&update=true" \
+                     --upload-file target/project1-1.0-SNAPSHOT.war
+                '''
             }
         }
     }
