@@ -32,10 +32,13 @@ pipeline {
 
         stage('Deploy WAR via curl') {
             steps {
-                sh '''
-                curl -X PUT "http://3.110.218.114:8080/manager/text/deploy?path=/project1&update=true" \
-                     --upload-file target/project1-1.0-SNAPSHOT.war
-                '''
+                withCredentials([usernamePassword(credentialsId: 'tomcat-deploy-creds', usernameVariable: 'TOMCAT_USER', passwordVariable: 'TOMCAT_PASS')]) {
+                    sh '''
+                    curl -u "$TOMCAT_USER:$TOMCAT_PASS" \
+                         -T target/project1-1.0-SNAPSHOT.war \
+                         "http://3.110.218.114:8080/manager/text/deploy?path=/project1&update=true"
+                    '''
+                }
             }
         }
     }
