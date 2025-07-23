@@ -1,7 +1,7 @@
 <!-- Root element of every Maven POM file -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"  
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <!-- POM model version (always 4.0.0 for Maven 2 and later) -->
@@ -25,26 +25,42 @@
     <!-- Java version to compile the code with -->
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+
+    <!-- Optional: SonarQube properties for automation -->
+    <sonar.projectKey>project1</sonar.projectKey>
+    <sonar.projectName>Project One</sonar.projectName>
+    <sonar.host.url>http://13.233.184.219:9000</sonar.host.url>
+    <sonar.login>admin</sonar.login>
+	<sonar.password>srEE@nihi1209</sonar.password>
+    <!-- Replace 'your_generated_token' with a real token -->
   </properties>
-  <!--- Build plugins 3.2.2 is jar recommend plugin 3.6 +-->
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-war-plugin</artifactId>
-      <version>3.4.0</version>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>com.example.App</mainClass>
-          </manifest>
-        </archive>
-      </configuration>
-    </plugin>
-  </plugins>
-</build>
 
+  <!-- Build plugins -->
+  <build>
+    <plugins>
+      <!-- WAR Plugin: creates a WAR archive for deployment -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.example.App</mainClass>
+              <!-- Main entry point (if applicable) -->
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
 
+      <!-- SonarQube Plugin: enables code analysis during build -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.10.0.2594</version>
+      </plugin>
+    </plugins>
+  </build>
 
   <!-- Project dependencies -->
   <dependencies>
@@ -56,14 +72,15 @@
       <scope>test</scope>
       <!-- Scope "test" means this dependency is only used during testing -->
     </dependency>
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>javax.servlet-api</artifactId>
-    <version>4.0.1</version>
-    <scope>provided</scope>
-  </dependency>
 
-
-</dependencies>
+    <!-- Servlet API: needed for building web applications -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+      <!-- "provided" scope means it will be supplied by the container (e.g., Tomcat) -->
+    </dependency>
+  </dependencies>
 
 </project>
