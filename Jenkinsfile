@@ -33,7 +33,7 @@ pipeline {
         stage('Deploy WAR via curl') {
             steps {
                 sh '''
-                curl -X PUT "http://13.235.9.222:8080/manager/text/deploy?path=/project1&update=true" \
+                curl -X PUT "http://3.110.218.114:8080//manager/text/deploy?path=/project1&update=true" \
                      --upload-file target/project1-1.0-SNAPSHOT.war
                 '''
             }
