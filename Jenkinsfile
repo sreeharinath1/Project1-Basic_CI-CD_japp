@@ -36,7 +36,7 @@ pipeline {
                     sh '''
                     curl -u "$TOMCAT_USER:$TOMCAT_PASS" \
                          -T target/project1-1.0-SNAPSHOT.war \
-                         "http://3.110.218.114:8080/manager/text/deploy?path=/project1&update=true"
+                         "http://52.66.241.21:8080/manager/text/deploy?path=/project1&update=true"
                     '''
                 }
             }
