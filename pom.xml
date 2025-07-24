@@ -11,10 +11,10 @@
   <groupId>com.example</groupId>
 
   <!-- Artifact ID: the name of your project/module -->
-  <artifactId>project1</artifactId>
+  <artifactId>SreeJavaApp</artifactId>
 
   <!-- Version of your project -->
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0-RELEASE</version>
   <!-- "SNAPSHOT" means this is a development version -->
 
   <!-- Packaging type: can be jar, war, ear, etc. -->
