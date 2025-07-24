@@ -29,9 +29,8 @@
     <!-- Optional: SonarQube properties for automation -->
     <sonar.projectKey>project1</sonar.projectKey>
     <sonar.projectName>Project One</sonar.projectName>
-    <sonar.host.url>http://13.233.184.219:9000</sonar.host.url>
-    <sonar.login>admin</sonar.login>
-	<sonar.password>srEE@nihi1209</sonar.password>
+    <sonar.host.url>http://43.205.99.34:9000</sonar.host.url>
+    <sonar.login>squ_2d4708f6cc7fe30fd44547995c48c2cb2799397f</sonar.login>
     <!-- Replace 'your_generated_token' with a real token -->
   </properties>
 
