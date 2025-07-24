@@ -61,6 +61,23 @@
     </plugins>
   </build>
 
+
+<distributionManagement>
+  <repository>
+    <id>releases</id>
+    <name>Sree Nexus Releases</name>
+    <url>http://13.232.228.50:8081/sree/repository/maven-releases/</url>
+  </repository>
+  <snapshotRepository>
+    <id>snapshots</id>
+    <name>Sree Nexus Snapshots</name>
+    <url>http://13.232.228.50:8081/sree/repository/maven-snapshots/</url>
+  </snapshotRepository>
+</distributionManagement>
+
+
+
+
   <!-- Project dependencies -->
   <dependencies>
     <!-- JUnit: used for writing and running unit tests -->
