@@ -1,28 +1,43 @@
 <!-- Root element of every Maven POM file -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"  
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <!-- Required POM model version -->
+  <!-- POM model version (always 4.0.0 for Maven 2 and later) -->
   <modelVersion>4.0.0</modelVersion>
 
-  <!-- Identifiers for the project -->
+  <!-- Group ID: typically your organization or domain in reverse -->
   <groupId>com.example</groupId>
-  <artifactId>project1</artifactId>
-  <version>1.0-SNAPSHOT</version> <!-- Use -SNAPSHOT for development builds -->
-  <packaging>war</packaging> <!-- We're creating a WAR for web deployment -->
 
-  <!-- Build-time properties -->
+  <!-- Artifact ID: the name of your project/module -->
+  <artifactId>project1</artifactId>
+
+  <!-- Version of your project -->
+  <version>1.0-SNAPSHOT</version>
+  <!-- "SNAPSHOT" means this is a development version -->
+
+  <!-- Packaging type: can be jar, war, ear, etc. -->
+  <packaging>war</packaging>
+
+  <!-- Build properties -->
   <properties>
-    <maven.compiler.source>17</maven.compiler.source> <!-- Java version -->
+    <!-- Java version to compile the code with -->
+    <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
+
+    <!-- Optional: SonarQube properties for automation -->
+    <sonar.projectKey>project1</sonar.projectKey>
+    <sonar.projectName>Project One</sonar.projectName>
+    <sonar.host.url>http://43.205.99.34:9000</sonar.host.url>
+    <sonar.login>squ_2d4708f6cc7fe30fd44547995c48c2cb2799397f</sonar.login>
+    <!-- Replace 'your_generated_token' with a real token -->
   </properties>
 
-  <!-- Build plugins section -->
+  <!-- Build plugins -->
   <build>
     <plugins>
-      <!-- WAR plugin for packaging -->
+      <!-- WAR Plugin: creates a WAR archive for deployment -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
@@ -30,47 +45,57 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.example.App</mainClass> <!-- Optional entry point -->
+              <mainClass>com.example.App</mainClass>
+              <!-- Main entry point (if applicable) -->
             </manifest>
           </archive>
         </configuration>
       </plugin>
+
+      <!-- SonarQube Plugin: enables code analysis during build -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.10.0.2594</version>
+      </plugin>
     </plugins>
   </build>
 
-  <!-- NEW: Distribution Management for Nexus deployment -->
-  <distributionManagement>
-    <!-- Release repo: used when version does NOT end in -SNAPSHOT -->
-    <repository>
-      <id>java-web-release</id>
-      <name>Java Web Release Repo</name>
-      <url>http://13.232.228.50:8081/sree/repository/java-web-release/</url>
-    </repository>
 
-    <!-- Snapshot repo: used when version ends in -SNAPSHOT -->
-    <snapshotRepository>
-      <id>java-web-snapshot</id>
-      <name>Java Web Snapshot Repo</name>
-      <url>http://13.232.228.50:8081/sree/repository/java-web-snapshot/</url>
-    </snapshotRepository>
-  </distributionManagement>
+<distributionManagement>
+  <repository>
+    <id>releases</id>
+    <name>Sree Nexus Releases</name>
+    <url>http://13.232.228.50:8081/sree/repository/java-web-release/</url>
+  </repository>
+  <snapshotRepository>
+    <id>snapshots</id>
+    <name>Sree Nexus Snapshots</name>
+    <url>http://13.232.228.50:8081/sree/repository/java-web-snapshot/</url>
+  </snapshotRepository>
+</distributionManagement>
+
+
+
 
   <!-- Project dependencies -->
   <dependencies>
-    <!-- JUnit for unit testing -->
+    <!-- JUnit: used for writing and running unit tests -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
+      <!-- Scope "test" means this dependency is only used during testing -->
     </dependency>
 
-    <!-- Servlet API for web development -->
+    <!-- Servlet API: needed for building web applications -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>4.0.1</version>
-      <scope>provided</scope> <!-- Provided by the server (e.g., Tomcat) -->
+      <scope>provided</scope>
+      <!-- "provided" scope means it will be supplied by the container (e.g., Tomcat) -->
     </dependency>
   </dependencies>
 
